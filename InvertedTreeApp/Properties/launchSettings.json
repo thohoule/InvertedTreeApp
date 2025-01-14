@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "InvertedTreeApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "InvertedTreeApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

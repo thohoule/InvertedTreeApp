@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="InvertedTreeApp.Views.Pages.MainPages.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InvertedTreeApp.Views.Pages.MainPages"
+    xmlns:views="using:InvertedTreeApp.Views"
+    xmlns:core ="using:InvertedTreeApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ComboBox x:Name="ElementTypeComboBox"
+                      Width="120"
+                      SelectedIndex="0"
+                      ItemsSource="{x:Bind core:DataManager.ElementTypes}"
+                      SelectionChanged="ElementTypeComboBox_SelectionChanged"/>
+            <AppBarButton x:Name="AddAppButton" Icon="Add"
+                          Click="AddAppButton_Click"/>
+            <AppBarButton x:Name="RemoveAppButton" Icon="Remove"
+                          Click="RemoveAppButton_Click"/>
+            <AppBarSeparator />
+            <AppBarButton x:Name="SaveAppButton" Icon="Save" IsEnabled="False"
+                          Click="SaveAppButton_Click"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <views:ElementListControl x:Name="ElementList" Grid.Column="0"
+                                      ItemsSource="{x:Bind ViewModel.ElementViewModel.Elements, Mode=OneWay}"
+                                      SelectionChanged="ElementList_SelectionChanged"/>
+            <views:ElementDisplayControl x:Name="ElementDisplay" Grid.Column="1"
+                                         Selected="{x:Bind ViewModel.ElementViewModel.SelectedElement, Mode=OneWay}" />
+        </Grid>
+    </Grid>
+</Page>

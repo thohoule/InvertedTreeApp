@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ElementType]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
+    [Name] NVARCHAR(50) NOT NULL, 
+    [DataName] NVARCHAR(50) NOT NULL
+)
