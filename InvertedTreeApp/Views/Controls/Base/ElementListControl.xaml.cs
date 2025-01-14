@@ -22,13 +22,13 @@ namespace InvertedTreeApp.Views
 {
     public sealed partial class ElementListControl : UserControl
     {
-        //private IReadOnlyList<IElementModel> itemSource;
+        private IReadOnlyList<IElementModel> itemSource;
         public event SelectionChangedEventHandler SelectionChanged;
 
         public IReadOnlyList<IElementModel> ItemsSource
         {
-            get;
-            set;
+            get => itemSource;
+            set => setItemSource(value);
         }
 
         public IElementModel SelectedItem
@@ -51,12 +51,12 @@ namespace InvertedTreeApp.Views
             SelectionChanged?.Invoke(this, e);
         }
 
-        //private void setItemSource(IReadOnlyList<IElementModel> list)
-        //{
-        //    itemSource = list;
+        private void setItemSource(IReadOnlyList<IElementModel> list)
+        {
+            itemSource = list;
 
-        //    if (itemSource.Count > 0)
-        //        SelectedItem = itemSource[0];
-        //}
+            if (itemSource.Count > 0)
+                SelectedItem = itemSource[0];
+        }
     }
 }

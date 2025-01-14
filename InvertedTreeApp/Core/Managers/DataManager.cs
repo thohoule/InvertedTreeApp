@@ -23,7 +23,6 @@ namespace InvertedTreeApp
             access = new SQLDataAccess(ConnectionInfo.Connection_String);
             elementTypes = ElementTypeData.LoadList(access);
             raceData = new RaceData(access);
-            //change
         }
     }
 }

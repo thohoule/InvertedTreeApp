@@ -31,5 +31,15 @@ namespace InvertedTreeApp.Views
 
             this.InitializeComponent();
         }
+
+        private void AddHeritageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveHeritageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

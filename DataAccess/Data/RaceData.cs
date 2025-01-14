@@ -10,6 +10,7 @@ namespace DataAccess
         private const string Insert_Procedure = "dbo.spRace_Insert";
         private const string Update_Procedure = "dbo.spRace_Update";
         private const string Get_Options_Procedure = "spRace_GetHeritageOption";
+        private const string Get_Excluded_Options_Procedure = "sRace_GetExcludedHeritageOptions";
 
         private ISQLDataAccess access;
 
@@ -20,30 +21,78 @@ namespace DataAccess
 
         public IEnumerable<RaceModel> GetAll()
         {
-            return access.LoadData<RaceModel, dynamic>(Get_All_Procedure, new { });
+            var items = access.LoadData<RaceModel, dynamic>(Get_All_Procedure, new { });
+
+            foreach (var item in items)
+                SetHeritageOptions(item);
+
+            return items;
         }
 
-        public Task<IEnumerable<RaceModel>> GetAllAsync()
+        public async Task<IEnumerable<RaceModel>> GetAllAsync()
         {
-            return access.LoadDataAsync<RaceModel, dynamic>(Get_All_Procedure, new {  });
+            var items = await access.LoadDataAsync<RaceModel, dynamic>(Get_All_Procedure, new {  });
+
+            foreach (var item in items)
+                await SetHeritageOptionsAsync(item);
+
+            return items;
         }
 
         public RaceModel? Get(int id)
         {
-            var result = access.LoadData<RaceModel, dynamic>(Get_Procedure, new { id });
-            return result.FirstOrDefault();
+            var item = access.LoadData<RaceModel, dynamic>(
+                Get_Procedure, new { id }).FirstOrDefault();
+
+            if (item != null)
+                SetHeritageOptions(item);
+
+            return item;
         }
 
         public async Task<RaceModel?> GetAsync(int id)
         {
             var result = await access.LoadDataAsync<RaceModel, dynamic>(Get_Procedure, new { id });
-            return result.FirstOrDefault();
+            var item = result.FirstOrDefault();
+
+            if (item != null)
+                await SetHeritageOptionsAsync(item);
+
+            return item;
         }
 
         public IEnumerable<HeritageModel> GetHeritageOptions(int raceID)
         {
             var result = access.LoadData<HeritageModel, dynamic>(
                 Get_Options_Procedure, new { raceID });
+
+            return result;
+        }
+
+        public async Task<IEnumerable<HeritageModel>> GetHeritageOptionsAsync(int raceID)
+        {
+            var result = await access.LoadDataAsync<HeritageModel, dynamic>(
+                Get_Options_Procedure, new { raceID });
+
+            return result;
+        }
+
+        public void SetHeritageOptions(RaceModel model)
+        {
+            model.HeritageOptions = new List<HeritageModel>(GetHeritageOptions(model.Id));
+        }
+
+        public async Task SetHeritageOptionsAsync(RaceModel model)
+        {
+            var options = await GetHeritageOptionsAsync(model.Id);
+
+            model.HeritageOptions = new List<HeritageModel>(options);
+        }
+
+        public IEnumerable<HeritageModel> GetExcludedHeritageOptions(int raceID)
+        {
+            var result = access.LoadData<HeritageModel, dynamic>(
+                Get_Excluded_Options_Procedure, new { raceID });
 
             return result;
         }

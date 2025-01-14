@@ -3,11 +3,60 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InvertedTreeApp.Views"
+    xmlns:models="using:DataAccess.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="{x:Bind raceViewModel}" />
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <Border BorderThickness="1" BorderBrush="White" Width="280"                    
+                    MaxHeight="300" HorizontalAlignment="Left"
+                    Margin="10,10,10,10">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Heritages" HorizontalAlignment="Center"
+                           Padding="0,0,0,5"/>
+                <Border BorderThickness="1" BorderBrush="White"
+                        Margin="10,0,10,15"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+                    <ScrollView Grid.Column="0"
+                                Height="280">
+                        <ListBox x:Name="HeritageOtionsListBox"
+                                 ItemsSource="{x:Bind raceViewModel.SelectedRace.HeritageOptions, Mode=OneWay}"
+                                 Margin="5,0,5,5"
+                                 SelectionMode="Multiple">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="models:HeritageModel">
+                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollView>
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <Button x:Name="AddHeritageButton" Content="&lt;"
+                                Click="AddHeritageButton_Click" />
+                        <Button x:Name="RemoveHeritageButton" Content=">"
+                                Click="RemoveHeritageButton_Click" />
+                    </StackPanel>
+                    <ScrollViewer Grid.Column="2"
+                                  Height="280">
+                        <ListBox x:Name="HeritagePoolListBox"
+                                 Margin="5,0,5,5"
+                                 SelectionMode="Multiple"
+                                 ItemsSource="{x:Bind raceViewModel.HeritageOptionPool, Mode=OneWay}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="models:HeritageModel">
+                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </UserControl>
