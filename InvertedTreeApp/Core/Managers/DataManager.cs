@@ -8,8 +8,6 @@ namespace InvertedTreeApp
 {
     public class DataManager
     {
-        private const string Connection_String = "Data Source=OUROBOROS\\SQLEXPRESS;Initial Catalog=InvertedTreeDB;Integrated Security=True;TrustServerCertificate=True";
-
         private SQLDataAccess access;
         private List<string> elementTypes;
         private RaceData raceData;
@@ -22,9 +20,10 @@ namespace InvertedTreeApp
 
         private DataManager()
         {
-            access = new SQLDataAccess(Connection_String);
+            access = new SQLDataAccess(ConnectionInfo.Connection_String);
             elementTypes = ElementTypeData.LoadList(access);
             raceData = new RaceData(access);
+            //change
         }
     }
 }

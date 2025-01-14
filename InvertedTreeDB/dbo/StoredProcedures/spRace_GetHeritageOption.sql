@@ -4,7 +4,7 @@ AS
 begin
 	select *
 	from dbo.[Heritage] left outer join 
-	(select * 
+	(select *
 	from dbo.[HeritageOption]
 	where RaceId = @raceID) as temp
 	on temp.HeritageId = Id

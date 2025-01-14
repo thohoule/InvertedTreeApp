@@ -40,10 +40,10 @@ namespace DataAccess
             return result.FirstOrDefault();
         }
 
-        public IEnumerable<HeritageModel> GetHeritageOptions(int id)
+        public IEnumerable<HeritageModel> GetHeritageOptions(int raceID)
         {
             var result = access.LoadData<HeritageModel, dynamic>(
-                Get_Options_Procedure, new { id });
+                Get_Options_Procedure, new { raceID });
 
             return result;
         }

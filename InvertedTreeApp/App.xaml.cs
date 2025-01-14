@@ -33,8 +33,6 @@ namespace InvertedTreeApp
         /// </summary>
         public App()
         {
-            var items = DataManager.RaceData.GetHeritageOptions(1);
-
             this.InitializeComponent();
         }
 
