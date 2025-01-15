@@ -1,6 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using InvertedTreeApp.Views;
+using InvertedTreeApp.Views.Controls.Elements;
 using Microsoft.UI.Xaml;
 
 namespace InvertedTreeApp.ViewModels.Pages
@@ -26,9 +27,13 @@ namespace InvertedTreeApp.ViewModels.Pages
             switch (typeName)
             {
                 case "Race":
-                    var control = new RaceControl();
-                    ElementViewModel = control.ViewModel;
-                    return control;
+                    var raceControl = new RaceControl();
+                    ElementViewModel = raceControl.ViewModel;
+                    return raceControl;
+                case "Heritage":
+                    var heritageControl = new HeritageControl();
+                    ElementViewModel = heritageControl.ViewModel;
+                    return heritageControl;
             }
 
             throw new NotSupportedException();

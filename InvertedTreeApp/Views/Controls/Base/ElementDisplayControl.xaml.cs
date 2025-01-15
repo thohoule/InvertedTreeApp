@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using DataAccess.Models;
+using InvertedTreeApp.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -20,16 +21,16 @@ namespace InvertedTreeApp.Views
     {
         private ElementDisplayViewModel viewModel;
 
-        public IElementModel Selected 
-        { 
-            get => viewModel.Selected; 
-            set => viewModel.Selected = value; 
+        public IElementModel SelectedItem
+        {
+            get => viewModel.SelectedItem;
+            set => viewModel.SelectedItem = value;
         }
 
         public UIElement ElementControl
         {
-            get => viewModel.ElementControl;
-            set => viewModel.ElementControl = value;
+            get => ElementCanvas.Child;
+            set => ElementCanvas.Child = value;
         }
 
         public ElementDisplayControl()
@@ -38,25 +39,17 @@ namespace InvertedTreeApp.Views
 
             this.InitializeComponent();
         }
-    }
 
-    public class ElementDisplayViewModel : ObservableObject
-    {
-        private IElementModel selected;
-        private UIElement elementControl;
-
-        public IElementModel Selected
+        private partial class ElementDisplayViewModel : ObservableObject
         {
-            get => selected;
-            set => SetProperty(selected, value, this,
-                (model, v) => model.selected = v);
-        }
+            private IElementModel selectedItem;
 
-        public UIElement ElementControl
-        {
-            get => elementControl;
-            set => SetProperty(elementControl, value, this,
-                (model, v) => model.elementControl = v);
+            public IElementModel SelectedItem
+            {
+                get => selectedItem;
+                set => SetProperty(selectedItem, value, this,
+                    (model, v) => model.selectedItem = v);
+            }
         }
     }
 }

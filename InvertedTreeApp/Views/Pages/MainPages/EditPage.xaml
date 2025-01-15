@@ -38,7 +38,7 @@
                                       ItemsSource="{x:Bind ViewModel.ElementViewModel.Elements, Mode=OneWay}"
                                       SelectionChanged="ElementList_SelectionChanged"/>
             <views:ElementDisplayControl x:Name="ElementDisplay" Grid.Column="1"
-                                         Selected="{x:Bind ViewModel.ElementViewModel.SelectedElement, Mode=OneWay}" />
+                                         SelectedItem="{x:Bind ViewModel.ElementViewModel.SelectedElement, Mode=OneWay}" />
         </Grid>
     </Grid>
 </Page>

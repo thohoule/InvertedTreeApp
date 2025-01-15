@@ -14,10 +14,10 @@
                 <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
             <TextBox Header="Name:" 
-             Text="{x:Bind viewModel.Selected.Name,Mode=TwoWay}"
+             Text="{x:Bind viewModel.SelectedItem.Name,Mode=TwoWay}"
                  Grid.Column="0" />
             <local:StateDropDown Grid.Column="1"
-                                 State="{x:Bind viewModel.Selected.State}"/>
+                                 State="{x:Bind viewModel.SelectedItem.State}"/>
             <!--<DropDownButton Content="State"
                         Grid.Column="1"
                         VerticalAlignment="Bottom"
@@ -35,8 +35,8 @@
             </DropDownButton>-->
         </Grid>
         <TextBox Header="Description:"
-             Text="{x:Bind viewModel.Selected.Description,Mode=TwoWay}"/>
+             Text="{x:Bind viewModel.SelectedItem.Description,Mode=TwoWay}"/>
         <Border x:Name="ElementCanvas" Grid.Column="1"
-                Child="{x:Bind viewModel.ElementControl}" Margin="5,5,5,5" />
+                Margin="5,5,5,5" />
     </StackPanel>
 </UserControl>

@@ -9,9 +9,7 @@
     mc:Ignorable="d">
 
     <ListBox x:Name="ElementListBox" 
-            ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
             SelectionMode="Single"
-            SelectedValue="{x:Bind SelectedItem, Mode=TwoWay}"
             SelectionChanged="ElementListBox_SelectionChanged">
         <ListBox.ItemTemplate>
             <DataTemplate x:DataType="models:IElementModel">

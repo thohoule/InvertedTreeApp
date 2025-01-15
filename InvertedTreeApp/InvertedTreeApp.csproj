@@ -15,6 +15,7 @@
     <None Remove="Views\Controls\Base\ElementDisplayControl.xaml" />
     <None Remove="Views\Controls\Base\ElementListControl.xaml" />
     <None Remove="Views\Controls\Base\StateDropDown.xaml" />
+    <None Remove="Views\Controls\Elements\HeritageControl.xaml" />
     <None Remove="Views\Controls\Elements\RaceControl.xaml" />
     <None Remove="Views\ElementsViewControl.xaml" />
     <None Remove="Views\Pages\MainPages\EditPage.xaml" />
@@ -47,6 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Elements\HeritageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Controls\Elements\RaceControl.xaml">

@@ -21,7 +21,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120"  />
                     </Grid.ColumnDefinitions>
                     <ScrollView Grid.Column="0"
                                 Height="280">
@@ -31,7 +31,7 @@
                                  SelectionMode="Multiple">
                             <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:HeritageModel">
-                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>

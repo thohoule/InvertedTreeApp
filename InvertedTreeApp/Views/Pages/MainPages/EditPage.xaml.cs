@@ -37,7 +37,7 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         #region Add Record
         private void AddAppButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.ElementViewModel.AddRecord();
         }
         #endregion
 
@@ -78,7 +78,9 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         private void ElementTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Check if edited
-            ElementDisplay.ElementControl = 
+
+
+            ElementDisplay.ElementControl =
                 ViewModel.ChangeType(ElementTypeComboBox.SelectedIndex);
         }
         #endregion
@@ -86,7 +88,7 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         private void ElementList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.ElementViewModel.SelectedElement = ElementList.SelectedItem;
-            ElementDisplay.Selected = ElementList.SelectedItem;
+            ElementDisplay.SelectedItem = ElementList.SelectedItem;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataAccess.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DataAccess.Models;
 using InvertedTreeApp.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -9,6 +10,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,41 +24,28 @@ namespace InvertedTreeApp.Views
 {
     public sealed partial class ElementListControl : UserControl
     {
-        private IReadOnlyList<IElementModel> itemSource;
         public event SelectionChangedEventHandler SelectionChanged;
 
-        public IReadOnlyList<IElementModel> ItemsSource
+        public ObservableCollection<IElementModel> ItemsSource
         {
-            get => itemSource;
-            set => setItemSource(value);
+            get => ElementListBox.ItemsSource as ObservableCollection<IElementModel>;
+            set => ElementListBox.ItemsSource = value;
         }
 
         public IElementModel SelectedItem
         {
-            get;
-            set;
+            get => ElementListBox.SelectedItem as IElementModel;
+            set => ElementListBox.SelectedItem = value;
         }
-
-        //public ElementListViewModel ViewModel { get; private set; }
 
         public ElementListControl()
         {
-            //ViewModel = new ElementListViewModel();
-
             this.InitializeComponent();
         }
 
         private void ElementListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectionChanged?.Invoke(this, e);
-        }
-
-        private void setItemSource(IReadOnlyList<IElementModel> list)
-        {
-            itemSource = list;
-
-            if (itemSource.Count > 0)
-                SelectedItem = itemSource[0];
         }
     }
 }
