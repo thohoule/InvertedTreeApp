@@ -26,8 +26,17 @@ namespace DataAccess
 
         IElementProxy? IProxySet.SelectedItem { get => selectedItem; set => setSelected(validateValue(value)); }
 
+        /// <summary>
+        /// Event triggers when the selected item is changed.
+        /// </summary>
         public event PropertyChangedEventHandler SelectedChanged;
+        /// <summary>
+        /// Event triggers when the Items collection chanages.
+        /// </summary>
         public event CollectionChangeEventHandler ItemsChanged;
+        /// <summary>
+        /// Event triggers when the selected item is edited.
+        /// </summary>
         public event CollectionItemEventHandler ItemEdited;
 
         public ProxySet()

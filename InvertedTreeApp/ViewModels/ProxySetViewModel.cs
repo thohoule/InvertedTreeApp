@@ -15,6 +15,7 @@ namespace InvertedTreeApp.ViewModels
     {
         private IProxySet elementSet;
 
+        public bool IsEdited { get; private set; }
         public IProxySet ProxySet { get => elementSet; }
 
         public IReadOnlyList<IElementProxy> Items
@@ -45,6 +46,7 @@ namespace InvertedTreeApp.ViewModels
                 elementSet.ItemEdited -= ElementSet_ItemEdited;
             }
 
+            IsEdited = false;
             elementSet = set;
             elementSet.SelectedChanged += ElementSet_SelectedChanged;
             elementSet.ItemsChanged += ElementSet_ItemsChanged;
@@ -54,17 +56,19 @@ namespace InvertedTreeApp.ViewModels
         }
 
         private void ElementSet_SelectedChanged(object sender, PropertyChangedEventArgs e)
-        {
+        {            
             OnPropertyChanged(nameof(SelectedItem));
         }
 
         private void ElementSet_ItemsChanged(object sender, CollectionChangeEventArgs e)
         {
+            IsEdited = true;
             OnPropertyChanged(nameof(Items));
         }
 
         private void ElementSet_ItemEdited(object sender, object edited, string propertyChanged)
         {
+            IsEdited = true;
         }
 
         //public IProxySet ElementSet

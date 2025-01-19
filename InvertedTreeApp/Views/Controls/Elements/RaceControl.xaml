@@ -26,7 +26,7 @@
                     <ScrollView Grid.Column="0"
                                 Height="280">
                         <ListBox x:Name="HeritageOtionsListBox"
-                                 ItemsSource="{x:Bind raceViewModel.ElementSet.SelectedItem.HeritageOptions, Mode=OneWay}"
+                                 ItemsSource="{x:Bind raceViewModel.SelectedItem.HeritageOptions, Mode=OneWay}"
                                  Margin="5,0,5,5"
                                  SelectionMode="Multiple">
                             <ListBox.ItemTemplate>
@@ -47,7 +47,7 @@
                         <ListBox x:Name="HeritagePoolListBox"
                                  Margin="5,0,5,5"
                                  SelectionMode="Multiple"
-                                 ItemsSource="{x:Bind raceViewModel.ElementSet.SelectedItem.HeritageOptionPool, Mode=OneWay}">
+                                 ItemsSource="{x:Bind raceViewModel.SelectedItem.HeritageOptionPool, Mode=OneWay}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:HeritageModel">
                                     <TextBlock Text="{x:Bind Name, Mode=OneWay}" />

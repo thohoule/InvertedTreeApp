@@ -9,72 +9,18 @@ namespace InvertedTreeApp.ViewModels
 {
     public partial class HeritageViewModel : ObservableObject, IElementViewModel
     {
-        //private List<HeritageModel> elements;
-        //private HeritageModel selected;
+        private ProxySet<HeritageModel, HeritageProxy> elementSet;
 
-        //public ObservableCollection<IElementModel> Elements { get; private set; }
-        //public IElementModel SelectedElement
-        //{
-        //    get => selected;
-        //    set
-        //    {
-        //        SetProperty(selected, validateSetElement(value), this,
-        //        (model, v) => model.selected = v);
-        //        OnPropertyChanged(nameof(SelectedRace));
-        //    }
-        //}
-        //public HeritageModel SelectedRace { get => selected; }
-        //public ProxySetViewModel ProxyViewModel { get; private set; }
-        public ProxySet<HeritageModel, HeritageProxy> ElementSet { get; private set; }
-        IProxySet IElementViewModel.ElementSet => ElementSet;
+        //public ProxySet<HeritageModel, HeritageProxy> ElementSet { get; private set; }
+        IProxySet IElementViewModel.ElementSet => elementSet;
 
         public HeritageViewModel()
         {
-            ElementSet = DataManager.GetAllHeritages();
+            elementSet = DataManager.GetAllHeritages();
             //ProxyViewModel = new ProxySetViewModel(ElementSet);
 
-            if (ElementSet.Items.Count > 0)
-                ElementSet.SelectedItem = ElementSet.Items[0];
-
-            //elements = new List<HeritageModel>(DataManager.HeritageData.GetAll());
-            //Elements = new ObservableCollection<IElementModel>(DataManager.HeritageData.GetAll());
-
-            //if (Elements.Count > 0)
-            //    SelectedElement = Elements[0];
+            if (elementSet.Items.Count > 0)
+                elementSet.SelectedItem = elementSet.Items[0];
         }
-
-        //public void AddRecord()
-        //{
-        //    HeritageModel heritage = new HeritageModel()
-        //    {
-        //        Name = "New Heritage"
-        //    };
-
-        //    DataManager.HeritageData.Insert(heritage);
-        //    Elements.Add(heritage);
-        //    SelectedElement = heritage;
-        //}
-
-        //public void DeleteSelected()
-        //{
-
-        //}
-
-        //private HeritageModel validateSetElement(IElementModel model)
-        //{
-        //    if (model == null)
-        //        return null;
-
-        //    if (model is HeritageModel)
-        //    {
-        //        var heritage = model as HeritageModel;
-
-        //        //option loading goes here
-
-        //        return heritage;
-        //    }
-
-        //    throw new ArgumentException("Model was unexpected type.");
-        //}
     }
 }

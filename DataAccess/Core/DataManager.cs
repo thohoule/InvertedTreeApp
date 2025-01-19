@@ -28,6 +28,10 @@ namespace DataAccess
             heritageData = new HeritageData(access);
         }
 
+        /// <summary>
+        /// Loads all race models then wraps each in a proxy. 
+        /// </summary>
+        /// <returns>A Proxy Set contraining all loaded proxies of the type.</returns>
         public static ProxySet<RaceModel, RaceProxy> GetAllRaces()
         {
             var proxySet = new ProxySet<RaceModel, RaceProxy>(
@@ -37,6 +41,10 @@ namespace DataAccess
             return proxySet;
         }
 
+        /// <summary>
+        /// Loads all heritage models then wraps each in a proxy. 
+        /// </summary>
+        /// <returns>A Proxy Set contraining all loaded proxies of the type.</returns>
         public static ProxySet<HeritageModel, HeritageProxy> GetAllHeritages()
         {
             var proxySet = new ProxySet<HeritageModel, HeritageProxy>(
