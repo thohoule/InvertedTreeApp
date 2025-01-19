@@ -4,15 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InvertedTreeApp.Views"
     xmlns:models="using:DataAccess.Models"
+    xmlns:data="using:DataAccess"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <ListBox x:Name="ElementListBox" 
             SelectionMode="Single"
-            SelectionChanged="ElementListBox_SelectionChanged">
+            SelectionChanged="ElementListBox_SelectionChanged"
+             ItemsSource="{x:Bind ProxyViewModel.Items, Mode=OneWay}"
+             SelectedItem="{x:Bind ProxyViewModel.SelectedItem, Mode=TwoWay}">
         <ListBox.ItemTemplate>
-            <DataTemplate x:DataType="models:IElementModel">
+            <DataTemplate x:DataType="data:IElementProxy">
                 <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
             </DataTemplate>
         </ListBox.ItemTemplate>

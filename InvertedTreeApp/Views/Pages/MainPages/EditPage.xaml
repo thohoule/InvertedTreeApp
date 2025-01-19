@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InvertedTreeApp.Views.Pages.MainPages"
     xmlns:views="using:InvertedTreeApp.Views"
-    xmlns:core ="using:InvertedTreeApp"
+    xmlns:data ="using:DataAccess"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -19,7 +19,7 @@
             <ComboBox x:Name="ElementTypeComboBox"
                       Width="120"
                       SelectedIndex="0"
-                      ItemsSource="{x:Bind core:DataManager.ElementTypes}"
+                      ItemsSource="{x:Bind data:DataManager.ElementTypes}"
                       SelectionChanged="ElementTypeComboBox_SelectionChanged"/>
             <AppBarButton x:Name="AddAppButton" Icon="Add"
                           Click="AddAppButton_Click"/>
@@ -35,10 +35,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <views:ElementListControl x:Name="ElementList" Grid.Column="0"
-                                      ItemsSource="{x:Bind ViewModel.ElementViewModel.Elements, Mode=OneWay}"
+                                      ProxyViewModel="{x:Bind ViewModel.ProxyViewModel, Mode=OneWay}"
                                       SelectionChanged="ElementList_SelectionChanged"/>
             <views:ElementDisplayControl x:Name="ElementDisplay" Grid.Column="1"
-                                         SelectedItem="{x:Bind ViewModel.ElementViewModel.SelectedElement, Mode=OneWay}" />
+                                         ProxyViewModel="{x:Bind ViewModel.ProxyViewModel, Mode=OneWay}" />
         </Grid>
     </Grid>
 </Page>

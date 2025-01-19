@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /InvertedTreeApp/Core/Managers/DataManager.cs
 /InvertedTreeApp/Core/Managers/ConnectionInfo.cs
 /InvertedTreeApp/Core/ConnectionInfo.cs
+/DataAccess/Core/ConnectionInfo.cs

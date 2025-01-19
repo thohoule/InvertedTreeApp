@@ -1,4 +1,5 @@
-﻿using InvertedTreeApp.ViewModels.Pages;
+﻿using InvertedTreeApp.ViewModels;
+using InvertedTreeApp.ViewModels.Pages;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -37,7 +38,7 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         #region Add Record
         private void AddAppButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.ElementViewModel.AddRecord();
+            ViewModel.ProxyViewModel.ProxySet.AddNewRecord();
         }
         #endregion
 
@@ -45,19 +46,19 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         private async void RemoveAppButton_Click(object sender, RoutedEventArgs e)
         {
             if (await confirmDeleteRecord())
-                ViewModel.ElementViewModel.DeleteSelected();
+                ViewModel.ProxyViewModel.ProxySet.DeleteSelectedRecord();
         }
 
         private async Task<bool> confirmDeleteRecord()
         {
-            if (ViewModel.ElementViewModel.SelectedElement == null)
+            if (ViewModel.ProxyViewModel.SelectedItem == null)
                 return false;
 
             ContentDialog dialog = new ContentDialog();
             dialog.XamlRoot = this.XamlRoot;
             dialog.Title = "Confirm";
             dialog.Content = string.Format("{0} record will be deleted, are you sure you wish to delete this record?",
-                ViewModel.ElementViewModel.SelectedElement.Name);
+                ViewModel.ProxyViewModel.SelectedItem.Name);
             dialog.PrimaryButtonText = "Delete";
             dialog.SecondaryButtonText = "Cancel";
             dialog.DefaultButton = ContentDialogButton.Secondary;
@@ -87,8 +88,8 @@ namespace InvertedTreeApp.Views.Pages.MainPages
 
         private void ElementList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModel.ElementViewModel.SelectedElement = ElementList.SelectedItem;
-            ElementDisplay.SelectedItem = ElementList.SelectedItem;
+            //ViewModel.ElementSet.SelectedItem = ElementList.SelectedItem;
+            //ElementDisplay.SelectedItem = ElementList.SelectedItem;
         }
     }
 }

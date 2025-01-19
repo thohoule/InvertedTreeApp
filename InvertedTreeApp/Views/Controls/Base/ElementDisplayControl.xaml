@@ -14,10 +14,10 @@
                 <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
             <TextBox Header="Name:" 
-             Text="{x:Bind viewModel.SelectedItem.Name,Mode=TwoWay}"
+             Text="{x:Bind ProxyViewModel.SelectedItem.Name,Mode=TwoWay}"
                  Grid.Column="0" />
             <local:StateDropDown Grid.Column="1"
-                                 State="{x:Bind viewModel.SelectedItem.State}"/>
+                                 State="{x:Bind ProxyViewModel.SelectedItem.State, Mode=OneWay}"/>
             <!--<DropDownButton Content="State"
                         Grid.Column="1"
                         VerticalAlignment="Bottom"
@@ -35,7 +35,7 @@
             </DropDownButton>-->
         </Grid>
         <TextBox Header="Description:"
-             Text="{x:Bind viewModel.SelectedItem.Description,Mode=TwoWay}"/>
+             Text="{x:Bind ProxyViewModel.SelectedItem.Description,Mode=TwoWay}"/>
         <Border x:Name="ElementCanvas" Grid.Column="1"
                 Margin="5,5,5,5" />
     </StackPanel>

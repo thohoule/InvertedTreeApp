@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DataAccess;
 using DataAccess.Models;
 using InvertedTreeApp.ViewModels;
 using Microsoft.UI.Xaml;
@@ -21,11 +22,19 @@ namespace InvertedTreeApp.Views
     {
         private ElementDisplayViewModel viewModel;
 
-        public IElementModel SelectedItem
+        public ProxySetViewModel ProxyViewModel { get; set; }
+
+        public IProxySet ElementSet
         {
-            get => viewModel.SelectedItem;
-            set => viewModel.SelectedItem = value;
+            get;
+            set;
         }
+
+        //public IElementProxy SelectedItem
+        //{
+        //    get => viewModel.SelectedItem;
+        //    set => viewModel.SelectedItem = value;
+        //}
 
         public UIElement ElementControl
         {
@@ -42,9 +51,9 @@ namespace InvertedTreeApp.Views
 
         private partial class ElementDisplayViewModel : ObservableObject
         {
-            private IElementModel selectedItem;
+            private IElementProxy selectedItem;
 
-            public IElementModel SelectedItem
+            public IElementProxy SelectedItem
             {
                 get => selectedItem;
                 set => SetProperty(selectedItem, value, this,

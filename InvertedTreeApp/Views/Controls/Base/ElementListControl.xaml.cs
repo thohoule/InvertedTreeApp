@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DataAccess;
 using DataAccess.Models;
 using InvertedTreeApp.ViewModels;
 using Microsoft.UI.Xaml;
@@ -26,16 +27,28 @@ namespace InvertedTreeApp.Views
     {
         public event SelectionChangedEventHandler SelectionChanged;
 
-        public ObservableCollection<IElementModel> ItemsSource
-        {
-            get => ElementListBox.ItemsSource as ObservableCollection<IElementModel>;
-            set => ElementListBox.ItemsSource = value;
+        public ProxySetViewModel ProxyViewModel 
+        { 
+            get; 
+            set; 
         }
 
-        public IElementModel SelectedItem
+        //public ObservableCollection<IElementProxy> ItemsSource
+        //{
+        //    get => ElementListBox.ItemsSource as ObservableCollection<IElementProxy>;
+        //    set => ElementListBox.ItemsSource = value;
+        //}
+
+        //public IElementProxy SelectedItem
+        //{
+        //    get => ElementListBox.SelectedItem as IElementProxy;
+        //    set => ElementListBox.SelectedItem = value;
+        //}
+
+        public IProxySet ElementSet
         {
-            get => ElementListBox.SelectedItem as IElementModel;
-            set => ElementListBox.SelectedItem = value;
+            get;
+            set;
         }
 
         public ElementListControl()
