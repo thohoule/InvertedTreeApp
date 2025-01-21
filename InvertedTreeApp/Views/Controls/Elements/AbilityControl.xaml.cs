@@ -19,15 +19,15 @@ using Windows.Foundation.Collections;
 
 namespace InvertedTreeApp.Views
 {
-    public sealed partial class HeritageControl : UserControl, IElementControl
+    public sealed partial class AbilityControl : UserControl
     {
-        private HeritageViewModel heritageViewModel;
+        private AbilityViewModel abilityViewModel;
 
-        public IElementViewModel ViewModel { get => heritageViewModel; }
+        public IElementViewModel ViewModel { get => abilityViewModel; }
 
-        public HeritageControl()
+        public AbilityControl()
         {
-            heritageViewModel = new HeritageViewModel();
+            abilityViewModel = new AbilityViewModel();
 
             this.InitializeComponent();
         }

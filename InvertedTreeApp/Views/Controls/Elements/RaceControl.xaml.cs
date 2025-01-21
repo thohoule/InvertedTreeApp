@@ -42,8 +42,8 @@ namespace InvertedTreeApp.Views
 
         private void addItemToOptions(HeritageModel heritage)
         {
-            if (raceViewModel.ElementSet.SelectedItem.HeritageOptionPool.Remove(heritage))
-                raceViewModel.ElementSet.SelectedItem.HeritageOptions.Add(heritage);
+            if (raceViewModel.SelectedItem.HeritageOptionPool.Remove(heritage))
+                raceViewModel.SelectedItem.HeritageOptions.Add(heritage);
             //if (raceViewModel.HeritageOptionPool.Remove(heritage))
             //    raceViewModel.SelectedRace.HeritageOptions.Add(heritage);
         }
@@ -58,8 +58,8 @@ namespace InvertedTreeApp.Views
 
         private void removeItemToOptions(HeritageModel heritage)
         {
-            if (raceViewModel.ElementSet.SelectedItem.HeritageOptions.Remove(heritage))
-                raceViewModel.ElementSet.SelectedItem.HeritageOptionPool.Add(heritage);
+            if (raceViewModel.SelectedItem.HeritageOptions.Remove(heritage))
+                raceViewModel.SelectedItem.HeritageOptionPool.Add(heritage);
             //if (raceViewModel.SelectedRace.HeritageOptions.Remove(heritage))
             //    raceViewModel.HeritageOptionPool.Add(heritage);
         }
