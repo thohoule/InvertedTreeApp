@@ -12,17 +12,17 @@ namespace DataAccess
         where TModel : class, IElementModel, new()
         where TProxy : ElementProxy, new()
     {
-        private List<TProxy> items;
+        private ObservableCollection<TProxy> items;
         private TProxy? selectedItem;
 
-        public IReadOnlyList<TProxy> Items => items;
+        public ObservableCollection<TProxy> Items => items;
         public TProxy? SelectedItem
         {
             get => selectedItem;
             set => setSelected(value);
         }
 
-        IReadOnlyList<IElementProxy> IProxySet.Items => items;
+        IReadOnlyCollection<ElementProxy> IProxySet.Items => items;
 
         IElementProxy? IProxySet.SelectedItem { get => selectedItem; set => setSelected(validateValue(value)); }
 
@@ -41,12 +41,12 @@ namespace DataAccess
 
         public ProxySet()
         {
-            items = new List<TProxy>();
+            items = new ObservableCollection<TProxy>();
         }
 
         public ProxySet(IEnumerable<TModel> models)
         {
-            items = new List<TProxy>();
+            items = new ObservableCollection<TProxy>();
             AddModelRange(models);
 
             if (items.Count > 0)
@@ -85,8 +85,9 @@ namespace DataAccess
 
             var proxy = new TProxy();
             proxy.SetModel(this, model);
-            proxy.OnEdit("New");
+            //proxy.OnEdit("New");
             proxy.IsNewRecord = true;
+            proxy.OnInsert();
 
             items.Add(proxy);
             triggerItemChange(CollectionChangeAction.Add);
@@ -101,6 +102,15 @@ namespace DataAccess
         {
             if (proxy != null && proxy.Set == this)
                 ItemEdited?.Invoke(this, proxy, propertyChanged);
+        }
+
+        public void SaveChanges()
+        {
+            foreach (var proxy in items)
+            {
+                if (proxy.IsEdited)
+                    proxy.SaveToModel();
+            }
         }
 
         private void setSelected(TProxy? value)

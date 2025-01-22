@@ -33,9 +33,9 @@ namespace InvertedTreeApp.Views
             set; 
         }
 
-        //public ObservableCollection<IElementProxy> ItemsSource
+        //public IReadOnlyList<IElementProxy> ItemsSource
         //{
-        //    get => ElementListBox.ItemsSource as ObservableCollection<IElementProxy>;
+        //    get => ElementListBox.ItemsSource as IReadOnlyList<IElementProxy>;
         //    set => ElementListBox.ItemsSource = value;
         //}
 

@@ -19,5 +19,15 @@ namespace DataAccess
 
             return false;
         }
+
+        protected internal override void OnInsert()
+        {
+            DataManager.HeritageData.Insert(model);
+        }
+
+        protected override void onSave()
+        {
+            DataManager.HeritageData.Update(model);
+        }
     }
 }

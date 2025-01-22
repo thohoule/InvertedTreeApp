@@ -71,7 +71,7 @@ namespace InvertedTreeApp.Views.Pages.MainPages
         #region Save Records
         private void SaveAppButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.ProxyViewModel.SaveChanges();
         }
         #endregion
 

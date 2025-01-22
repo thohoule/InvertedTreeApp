@@ -2,25 +2,32 @@
 using DataAccess;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace InvertedTreeApp.ViewModels
 {
     public interface IProxySetViewModel
     {
-        IReadOnlyList<IElementProxy> Items { get; }
+        IReadOnlyCollection<ElementProxy> Items { get; }
         IElementProxy SelectedItem { get; set; }
     }
 
     public partial class ProxySetViewModel : ObservableObject, IProxySetViewModel
     {
         private IProxySet elementSet;
+        private bool isEdited;
 
-        public bool IsEdited { get; private set; }
+        public bool IsEdited
+        {
+            get => isEdited;
+            set => SetProperty(isEdited, value, this,
+                (model, v) => model.isEdited = v);
+        }
         public IProxySet ProxySet { get => elementSet; }
 
-        public IReadOnlyList<IElementProxy> Items
+        public IReadOnlyCollection<ElementProxy> Items
         {
-            get => elementSet.Items;
+            get => elementSet?.Items;
         }
 
         public IElementProxy SelectedItem
@@ -28,14 +35,6 @@ namespace InvertedTreeApp.ViewModels
             get => elementSet.SelectedItem;
             set => elementSet.SelectedItem = value;
         }
-
-        //public ProxySetViewModel(IProxySet proxySet)
-        //{
-        //    elementSet = proxySet;
-        //    elementSet.SelectedChanged += ElementSet_SelectedChanged;
-        //    elementSet.ItemsChanged += ElementSet_ItemsChanged;
-        //    elementSet.ItemEdited += ElementSet_ItemEdited;
-        //}
 
         public void SetProxySet(IProxySet set)
         {
@@ -71,23 +70,10 @@ namespace InvertedTreeApp.ViewModels
             IsEdited = true;
         }
 
-        //public IProxySet ElementSet
-        //{
-        //    get => elementSet;
-        //    set => SetProperty(elementSet, value, this,
-        //        (model, v) => model.elementSet = v);
-        //}
-
-        //public IReadOnlyList<IElementProxy> Items
-        //{
-        //    get => elementSet.Items;
-        //}
-
-        //public IElementProxy SelectedItem
-        //{
-        //    get => elementSet.SelectedItem;
-        //    set => SetProperty(elementSet.SelectedItem, value, this,
-        //        (model, v) => model.elementSet.SelectedItem = v);
-        //}
+        public void SaveChanges()
+        {
+            ProxySet.SaveChanges();
+            IsEdited = false;
+        }
     }
 }

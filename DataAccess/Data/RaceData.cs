@@ -99,7 +99,8 @@ namespace DataAccess
 
         public void Insert(RaceModel model)
         {
-            access.SaveData(Insert_Procedure, new { model.Name, model.Description, model.State });
+            access.SaveData(Insert_Procedure, new { model.Name, model.Description, 
+                model.State });
         }
 
         public Task InsertAsync(RaceModel model)
@@ -109,7 +110,7 @@ namespace DataAccess
 
         public void Update(RaceModel model)
         {
-            access.SaveData(Update_Procedure, model);
+            access.SaveData(Update_Procedure, new { model.Id, model.Name, model.Description, model.State });
         }
 
         public Task UpdateAsync(RaceModel model)

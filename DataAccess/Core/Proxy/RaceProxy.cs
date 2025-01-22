@@ -29,6 +29,16 @@ namespace DataAccess
             return false;
         }
 
+        protected internal override void OnInsert()
+        {
+            DataManager.RaceData.Insert(model);
+        }
+
+        protected override void onSave()
+        {
+            DataManager.RaceData.Update(model);
+        }
+
         public static implicit operator RaceModel(RaceProxy proxy)
         {
             return proxy.model;

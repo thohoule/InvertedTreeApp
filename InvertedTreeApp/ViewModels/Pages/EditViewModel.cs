@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using DataAccess;
 using InvertedTreeApp.Views;
-using InvertedTreeApp.Views.Controls.Elements;
 using Microsoft.UI.Xaml;
 
 namespace InvertedTreeApp.ViewModels.Pages
@@ -60,9 +59,23 @@ namespace InvertedTreeApp.ViewModels.Pages
                 case "Heritage":
                     var heritageControl = new HeritageControl();
                     ProxyViewModel.SetProxySet(heritageControl.ViewModel.ElementSet);
-                    //ElementViewModel = heritageControl.ViewModel;
-                    //ProxyViewModel = heritageControl.ViewModel.ProxyViewModel;
                     return heritageControl;
+                case "Characteristic":
+                    var characteristicControl = new CharacteristicControl();
+                    ProxyViewModel.SetProxySet(characteristicControl.ViewModel.ElementSet);
+                    return characteristicControl;
+                case "Trait":
+                    var traitControl = new TraitControl();
+                    ProxyViewModel.SetProxySet(traitControl.ViewModel.ElementSet);
+                    return traitControl;
+                case "Ability":
+                    var abilityControl = new AbilityControl();
+                    ProxyViewModel.SetProxySet(abilityControl.ViewModel.ElementSet);
+                    return abilityControl;
+                case "Material":
+                    var materialControl = new MaterialControl();
+                    ProxyViewModel.SetProxySet(materialControl.ViewModel.ElementSet);
+                    return materialControl;
             }
 
             throw new NotSupportedException();

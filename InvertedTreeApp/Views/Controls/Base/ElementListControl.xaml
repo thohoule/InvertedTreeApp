@@ -15,8 +15,8 @@
              ItemsSource="{x:Bind ProxyViewModel.Items, Mode=OneWay}"
              SelectedItem="{x:Bind ProxyViewModel.SelectedItem, Mode=TwoWay}">
         <ListBox.ItemTemplate>
-            <DataTemplate x:DataType="data:IElementProxy">
-                <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+            <DataTemplate x:DataType="data:ElementProxy">
+                <TextBlock Text="{x:Bind DisplayName, Mode=OneWay}" />
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

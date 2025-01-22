@@ -26,7 +26,7 @@
             <AppBarButton x:Name="RemoveAppButton" Icon="Remove"
                           Click="RemoveAppButton_Click"/>
             <AppBarSeparator />
-            <AppBarButton x:Name="SaveAppButton" Icon="Save" IsEnabled="False"
+            <AppBarButton x:Name="SaveAppButton" Icon="Save" IsEnabled="{x:Bind ViewModel.ProxyViewModel.IsEdited, Mode=OneWay}"
                           Click="SaveAppButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="1">

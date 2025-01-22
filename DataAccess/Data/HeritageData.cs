@@ -51,7 +51,7 @@ namespace DataAccess
 
         public void Update(HeritageModel model)
         {
-            access.SaveData(Update_Procedure, model);
+            access.SaveData(Update_Procedure, new { model.Id, model.Name, model.Description, model.State });
         }
 
         public Task UpdateAsync(HeritageModel model)

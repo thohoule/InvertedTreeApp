@@ -10,7 +10,7 @@ namespace DataAccess
 
         protected override bool onModelSet(IElementModel model)
         {
-            if (model is RaceModel)
+            if (model is CharacteristicModel)
             {
                 this.model = (CharacteristicModel)model;
 
@@ -18,6 +18,16 @@ namespace DataAccess
             }
 
             return false;
+        }
+
+        protected internal override void OnInsert()
+        {
+            DataManager.CharacteristicData.Insert(model);
+        }
+
+        protected override void onSave()
+        {
+            DataManager.CharacteristicData.Update(model);
         }
     }
 }

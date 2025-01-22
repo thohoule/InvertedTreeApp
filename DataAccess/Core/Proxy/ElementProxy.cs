@@ -7,6 +7,7 @@ namespace DataAccess
     {
         internal IProxySet Set { get; private set; }
 
+        private string displayName;
         protected abstract IElementModel element { get; }
 
         public bool IsEdited { get; private set; }
@@ -60,22 +61,41 @@ namespace DataAccess
             }
         }
 
-        public string DisplayName { get; private set; }
+        public string DisplayName
+        {
+            get => displayName;
+            set => SetProperty(displayName, value, this,
+                (model, v) => model.displayName = v);
+        }
+
+        internal void SaveToModel()
+        {
+            DisplayName = Name;
+            onSave();
+            IsEdited = false;
+        }
 
         internal bool SetModel(IProxySet proxySet, IElementModel model)
         {
             Set = proxySet;
+            DisplayName = model.Name;
             return onModelSet(model);
         }
 
         protected internal void OnEdit(string propertyName)
         {
             if (!IsEdited)
+            {
                 DisplayName = Name + '*';
+                OnPropertyChanged(nameof(DisplayName));
+            }
             IsEdited = true;
             Set.OnItemEdit(this, propertyName);
         }
 
-        protected abstract bool onModelSet(IElementModel model);
+        internal protected abstract void OnInsert();
+
+        protected abstract bool onModelSet(IElementModel model);        
+        protected abstract void onSave();
     }
 }
