@@ -8,7 +8,7 @@ namespace DataAccess
 {
     public delegate void CollectionItemEventHandler(object sender, object edited, string propertyChanged);
 
-    public sealed class ProxySet<TModel, TProxy> : IProxySet<TModel, TProxy>
+    public sealed class ProxySet<TModel, TProxy> : IProxySet<TModel, TProxy>, IProxySetInternal
         where TModel : class, IElementModel, new()
         where TProxy : ElementProxy, new()
     {
@@ -24,7 +24,7 @@ namespace DataAccess
 
         IReadOnlyCollection<ElementProxy> IProxySet.Items => items;
 
-        IElementProxy? IProxySet.SelectedItem { get => selectedItem; set => setSelected(validateValue(value)); }
+        ElementProxy? IProxySet.SelectedItem { get => selectedItem; set => setSelected(validateValue(value)); }
 
         /// <summary>
         /// Event triggers when the selected item is changed.
@@ -98,10 +98,17 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
-        public void OnItemEdit(ElementProxy proxy, string propertyChanged)
+        public void TriggerSelectedEdit(string propertyChanged)
+        {
+            SelectedItem?.OnEdit(propertyChanged);
+        }
+
+        internal void OnItemEdit(ElementProxy proxy, string propertyChanged)
         {
             if (proxy != null && proxy.Set == this)
+            {
                 ItemEdited?.Invoke(this, proxy, propertyChanged);
+            }
         }
 
         public void SaveChanges()
@@ -126,6 +133,14 @@ namespace DataAccess
         private TProxy? validateValue(IElementProxy? value)
         {
             return value as TProxy;
+        }
+
+        void IProxySetInternal.OnItemEdit(ElementProxy proxy, string propertyChanged)
+        {
+            if (proxy != null && proxy.Set == this)
+            {
+                ItemEdited?.Invoke(this, proxy, propertyChanged);
+            }
         }
     }
 }

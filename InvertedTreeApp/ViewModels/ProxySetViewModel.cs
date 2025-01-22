@@ -9,7 +9,7 @@ namespace InvertedTreeApp.ViewModels
     public interface IProxySetViewModel
     {
         IReadOnlyCollection<ElementProxy> Items { get; }
-        IElementProxy SelectedItem { get; set; }
+        ElementProxy SelectedItem { get; set; }
     }
 
     public partial class ProxySetViewModel : ObservableObject, IProxySetViewModel
@@ -30,7 +30,7 @@ namespace InvertedTreeApp.ViewModels
             get => elementSet?.Items;
         }
 
-        public IElementProxy SelectedItem
+        public ElementProxy SelectedItem
         {
             get => elementSet.SelectedItem;
             set => elementSet.SelectedItem = value;

@@ -5,7 +5,7 @@ namespace DataAccess
 {
     public abstract partial class ElementProxy : ObservableObject, IElementProxy
     {
-        internal IProxySet Set { get; private set; }
+        internal IProxySetInternal Set { get; private set; }
 
         private string displayName;
         protected abstract IElementModel element { get; }
@@ -75,7 +75,7 @@ namespace DataAccess
             IsEdited = false;
         }
 
-        internal bool SetModel(IProxySet proxySet, IElementModel model)
+        internal bool SetModel(IProxySetInternal proxySet, IElementModel model)
         {
             Set = proxySet;
             DisplayName = model.Name;

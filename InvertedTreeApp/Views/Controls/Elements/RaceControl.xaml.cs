@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using InvertedTreeApp.ViewModels;
 using DataAccess.Models;
+using DataAccess;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -36,14 +37,22 @@ namespace InvertedTreeApp.Views
         #region Add Click Handling
         private void AddHeritageButton_Click(object sender, RoutedEventArgs e)
         {
+            if (HeritagePoolListBox.SelectedItems.Count == 0)
+                return;
+
             foreach (HeritageModel model in HeritagePoolListBox.SelectedItems)
                 addItemToOptions(model);
+
+            raceViewModel.ElementSet.TriggerSelectedEdit(
+                nameof(RaceProxy.HeritageOptions));
         }
 
         private void addItemToOptions(HeritageModel heritage)
         {
             if (raceViewModel.SelectedItem.HeritageOptionPool.Remove(heritage))
                 raceViewModel.SelectedItem.HeritageOptions.Add(heritage);
+            //raceViewModel.ElementSet.OnItemEdit(raceViewModel.SelectedItem,
+            //    nameof(RaceProxy.HeritageOptions));
             //if (raceViewModel.HeritageOptionPool.Remove(heritage))
             //    raceViewModel.SelectedRace.HeritageOptions.Add(heritage);
         }
@@ -52,8 +61,14 @@ namespace InvertedTreeApp.Views
         #region Remove Click Handling
         private void RemoveHeritageButton_Click(object sender, RoutedEventArgs e)
         {
+            if (HeritageOtionsListBox.SelectedItems.Count == 0)
+                return;
+
             foreach (HeritageModel model in HeritageOtionsListBox.SelectedItems)
                 removeItemToOptions(model);
+
+            raceViewModel.ElementSet.TriggerSelectedEdit(
+                nameof(RaceProxy.HeritageOptionPool));
         }
 
         private void removeItemToOptions(HeritageModel heritage)

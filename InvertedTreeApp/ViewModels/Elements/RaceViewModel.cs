@@ -13,7 +13,7 @@ namespace InvertedTreeApp.ViewModels
         private ProxySet<RaceModel, RaceProxy> elementSet;
 
         //public ProxySet<RaceModel, RaceProxy> ElementSet { get; private set; }
-        IProxySet IElementViewModel.ElementSet => elementSet;
+        public IProxySet ElementSet => elementSet;
 
         public RaceProxy SelectedItem { get; private set; }
 

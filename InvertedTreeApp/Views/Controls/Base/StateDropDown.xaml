@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-
-    </Grid>
+    <DropDownButton x:Name="StateDropButton" 
+                    VerticalAlignment="Bottom"
+                    Width="120" />
 </UserControl>

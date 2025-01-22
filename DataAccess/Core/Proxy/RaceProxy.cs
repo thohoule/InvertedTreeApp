@@ -37,6 +37,9 @@ namespace DataAccess
         protected override void onSave()
         {
             DataManager.RaceData.Update(model);
+
+            //Update Heritage Options
+            DataManager.RaceData.UpdateHeritageOptions(model, HeritageOptions);
         }
 
         public static implicit operator RaceModel(RaceProxy proxy)

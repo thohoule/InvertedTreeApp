@@ -11,6 +11,7 @@ namespace DataAccess
         private const string Update_Procedure = "dbo.spRace_Update";
         private const string Get_Options_Procedure = "spRace_GetHeritageOption";
         private const string Get_Excluded_Options_Procedure = "sRace_GetExcludedHeritageOptions";
+        private const string Insert_Hetitage_Option_Procedure = "spRace_InsertHeritageOption";
 
         private ISQLDataAccess access;
 
@@ -95,6 +96,16 @@ namespace DataAccess
                 Get_Excluded_Options_Procedure, new { raceID });
 
             return result;
+        }
+
+        public void UpdateHeritageOptions(RaceModel race, IEnumerable<HeritageModel> options)
+        {
+            foreach (var item in options)
+            {
+                var option = new HeritageOption(race, item);
+                access.SaveData(Insert_Hetitage_Option_Procedure,
+                    new { option.RaceID, option.HeritageID });
+            }
         }
 
         public void Insert(RaceModel model)

@@ -106,6 +106,7 @@
     <Build Include="dbo\Tables\HeritageOption.sql" />
     <Build Include="dbo\StoredProcedures\spRace_GetHeritageOption.sql" />
     <Build Include="dbo\StoredProcedures\sRace_GetExcludedHeritageOptions.sql" />
+    <Build Include="dbo\StoredProcedures\spRace_InsertHeritageOption.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="InvertedTreeDB.refactorlog" />

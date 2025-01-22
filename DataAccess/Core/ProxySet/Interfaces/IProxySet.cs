@@ -7,7 +7,7 @@ namespace DataAccess
     public interface IProxySet
     {
         IReadOnlyCollection<ElementProxy> Items { get; }
-        IElementProxy? SelectedItem { get; set; }
+        ElementProxy? SelectedItem { get; set; }
 
         event PropertyChangedEventHandler SelectedChanged;
         event CollectionChangeEventHandler ItemsChanged;
@@ -15,8 +15,14 @@ namespace DataAccess
 
         void AddNewRecord(string name = "New Element");
         bool DeleteSelectedRecord();
-        void OnItemEdit(ElementProxy proxy, string propertyChanged);
+        void TriggerSelectedEdit(string propertyChanged);
+        //void OnItemEdit(ElementProxy proxy, string propertyChanged);
         void SaveChanges();
+    }
+
+    internal interface IProxySetInternal : IProxySet
+    {
+        void OnItemEdit(ElementProxy proxy, string propertyChanged);
     }
 
     public interface IProxySet<TProxy>
