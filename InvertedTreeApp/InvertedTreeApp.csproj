@@ -17,8 +17,11 @@
     <None Remove="Views\Controls\Base\StateDropDown.xaml" />
     <None Remove="Views\Controls\Elements\AbilityControl.xaml" />
     <None Remove="Views\Controls\Elements\CharacteristicControl.xaml" />
+    <None Remove="Views\Controls\Elements\CharacteristicTypeControl.xaml" />
+    <None Remove="Views\Controls\Elements\FeatureControl.xaml" />
     <None Remove="Views\Controls\Elements\HeritageControl.xaml" />
     <None Remove="Views\Controls\Elements\MaterialControl.xaml" />
+    <None Remove="Views\Controls\Elements\PropertyControl.xaml" />
     <None Remove="Views\Controls\Elements\RaceControl.xaml" />
     <None Remove="Views\Controls\Elements\TraitControl.xaml" />
     <None Remove="Views\ElementsViewControl.xaml" />
@@ -52,6 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Elements\FeatureControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Elements\PropertyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Elements\CharacteristicTypeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Controls\Elements\MaterialControl.xaml">

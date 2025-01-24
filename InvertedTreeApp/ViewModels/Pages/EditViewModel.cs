@@ -60,10 +60,22 @@ namespace InvertedTreeApp.ViewModels.Pages
                     var heritageControl = new HeritageControl();
                     ProxyViewModel.SetProxySet(heritageControl.ViewModel.ElementSet);
                     return heritageControl;
+                case "CharacteristicType":
+                    var characteristicTypeControl = new CharacteristicTypeControl();
+                    ProxyViewModel.SetProxySet(characteristicTypeControl.ViewModel.ElementSet);
+                    return characteristicTypeControl;
                 case "Characteristic":
                     var characteristicControl = new CharacteristicControl();
                     ProxyViewModel.SetProxySet(characteristicControl.ViewModel.ElementSet);
                     return characteristicControl;
+                case "Property":
+                    var propertyControl = new PropertyControl();
+                    ProxyViewModel.SetProxySet(propertyControl.ViewModel.ElementSet);
+                    return propertyControl;
+                case "Feature":
+                    var featureControl = new FeatureControl();
+                    ProxyViewModel.SetProxySet(featureControl.ViewModel.ElementSet);
+                    return featureControl;
                 case "Trait":
                     var traitControl = new TraitControl();
                     ProxyViewModel.SetProxySet(traitControl.ViewModel.ElementSet);

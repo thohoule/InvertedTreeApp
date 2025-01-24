@@ -15,6 +15,9 @@ namespace DataAccess
         private TraitData traitData;
         private AbilityData abilityData;
         private MaterialData materialData;
+        private CharacteristicTypeData characteristicTypeData;
+        private PropertyData propertyData;
+        private FeatureData featureData;
 
         private static DataManager _instace;
         private static DataManager instance { get => _instace ?? (_instace = new DataManager()); }
@@ -25,6 +28,9 @@ namespace DataAccess
         internal static TraitData TraitData { get => instance.traitData; }
         internal static AbilityData AbilityData { get => instance.abilityData; }
         internal static MaterialData MaterialData { get => instance.materialData; }
+        internal static CharacteristicTypeData CharacteristicTypeData { get => instance.characteristicTypeData; }
+        internal static PropertyData PropertyData { get => instance.propertyData; }
+        internal static FeatureData FeatureData { get => instance.featureData; }
 
         public static IReadOnlyList<string> ElementTypes => instance.elementTypes;
 
@@ -109,6 +115,42 @@ namespace DataAccess
         {
             var proxySet = new ProxySet<MaterialModel, MaterialProxy>(
                 MaterialData.GetAll());
+
+            return proxySet;
+        }
+
+        /// <summary>
+        /// Loads all characteristic type models then wraps each in a proxy. 
+        /// </summary>
+        /// <returns>A Proxy Set contraining all loaded proxies of the type.</returns>
+        public static ProxySet<CharacteristicTypeModel, CharacteristicTypeProxy> GetAllCharacteristicTypes()
+        {
+            var proxySet = new ProxySet<CharacteristicTypeModel, CharacteristicTypeProxy>(
+                CharacteristicTypeData.GetAll());
+
+            return proxySet;
+        }
+
+        /// <summary>
+        /// Loads all property models then wraps each in a proxy. 
+        /// </summary>
+        /// <returns>A Proxy Set contraining all loaded proxies of the type.</returns>
+        public static ProxySet<PropertyModel, PropertyProxy> GetAllProperties()
+        {
+            var proxySet = new ProxySet<PropertyModel, PropertyProxy>(
+                PropertyData.GetAll());
+
+            return proxySet;
+        }
+
+        /// <summary>
+        /// Loads all feature models then wraps each in a proxy. 
+        /// </summary>
+        /// <returns>A Proxy Set contraining all loaded proxies of the type.</returns>
+        public static ProxySet<FeatureModel, FeatureProxy> GetAllFeatures()
+        {
+            var proxySet = new ProxySet<FeatureModel, FeatureProxy>(
+                FeatureData.GetAll());
 
             return proxySet;
         }

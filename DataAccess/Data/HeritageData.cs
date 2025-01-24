@@ -10,9 +10,9 @@ namespace DataAccess
         private const string Insert_Procedure = "dbo.spHeritage_Insert";
         private const string Update_Procedure = "dbo.spHeritage_Update";
         private const string Delete_Procedure = "dbo.spHeritage_Delete";
-        private const string Get_CharacteristicType_Options_Procedure = "";
-        private const string Get_Property_Options_Procedure = "";
-        private const string Get_Feature_Options_Procedure = "";
+        private const string Get_CharacteristicType_Options_Procedure = "spHeritage_GetCharacteristicTypeOption";
+        private const string Get_Property_Options_Procedure = "spHeritage_GetPropertyOption";
+        private const string Get_Feature_Options_Procedure = "spHeritage_GetFeatureOption";
 
         private ISQLDataAccess access;
 
@@ -88,23 +88,24 @@ namespace DataAccess
         /// <returns>All options that belong to provided id.</returns>
         public IEnumerable<FeatureModel> GetFeatureOptions(int heritageId)
         {
-            return access.LoadData<FeatureModel, dynamic>("", new { heritageId });
+            return access.LoadData<FeatureModel, dynamic>(
+                Get_Feature_Options_Procedure, new { heritageId });
         }
 
         public async Task<IEnumerable<FeatureModel>> GetFeatureOptionsAsync(int heritageId)
         {
-            var result = await access.LoadDataAsync<FeatureModel, dynamic>("",
-                new { heritageId });
+            var result = await access.LoadDataAsync<FeatureModel, dynamic>(
+                Get_Feature_Options_Procedure,new { heritageId });
             return result;
         }
         #endregion
 
         #region Get Excluded Options
-        public IEnumerable<CharacteristicTypeModel> 
-            GetExcludedCharacteristicTypeOptions(int heritageId)
-        {
+        //public IEnumerable<CharacteristicTypeModel> 
+        //    GetExcludedCharacteristicTypeOptions(int heritageId)
+        //{
 
-        }
+        //}
         #endregion
 
         #region Insert
