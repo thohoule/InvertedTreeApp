@@ -9,6 +9,7 @@ namespace DataAccess
         private const string Get_All_Procedure = "dbo.spTrait_GetAll";
         private const string Insert_Procedure = "dbo.spTrait_Insert";
         private const string Update_Procedure = "dbo.spTrait_Update";
+        private const string Delete_Procedure = "dbo.spTrait_Delete";
 
         private ISQLDataAccess access;
 
@@ -58,5 +59,27 @@ namespace DataAccess
         {
             return access.SaveDataAsync(Update_Procedure, model);
         }
+
+        #region Delete
+        public void Delete(TraitModel model)
+        {
+            Delete(model.Id);
+        }
+
+        public void Delete(int id)
+        {
+            access.SaveData(Delete_Procedure, new { Id = id });
+        }
+
+        public Task DeleteAsync(TraitModel model)
+        {
+            return DeleteAsync(model.Id);
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            return access.SaveDataAsync(Delete_Procedure, new { Id = id });
+        }
+        #endregion
     }
 }

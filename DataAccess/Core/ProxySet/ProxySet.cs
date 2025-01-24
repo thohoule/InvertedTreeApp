@@ -95,7 +95,10 @@ namespace DataAccess
 
         public bool DeleteSelectedRecord()
         {
-            throw new NotImplementedException();
+            if (SelectedItem == null)
+                return false;
+
+            return SelectedItem.DeleteModel();
         }
 
         public void TriggerSelectedEdit(string propertyChanged)

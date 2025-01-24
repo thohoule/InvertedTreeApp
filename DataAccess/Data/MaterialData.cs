@@ -9,6 +9,7 @@ namespace DataAccess
         private const string Get_All_Procedure = "dbo.spMaterial_GetAll";
         private const string Insert_Procedure = "dbo.spMaterial_Insert";
         private const string Update_Procedure = "dbo.spMaterial_Update";
+        private const string Delete_Procedure = "dbo.spMaterial_Delete";
 
         private ISQLDataAccess access;
 
@@ -17,6 +18,7 @@ namespace DataAccess
             this.access = access;
         }
 
+        #region Get Models
         public IEnumerable<MaterialModel> GetAll()
         {
             return access.LoadData<MaterialModel, dynamic>(Get_All_Procedure, new { });
@@ -38,7 +40,9 @@ namespace DataAccess
             var result = await access.LoadDataAsync<MaterialModel, dynamic>(Get_Procedure, new { id });
             return result.FirstOrDefault();
         }
+        #endregion
 
+        #region Insert
         public void Insert(MaterialModel model)
         {
             access.SaveData(Insert_Procedure, new { model.Name, model.Description, model.State });
@@ -48,7 +52,9 @@ namespace DataAccess
         {
             return access.SaveDataAsync(Insert_Procedure, new { model.Name, model.Description, model.State });
         }
+        #endregion
 
+        #region Update
         public void Update(MaterialModel model)
         {
             access.SaveData(Update_Procedure, new { model.Id, model.Name, model.Description, model.State });
@@ -58,5 +64,28 @@ namespace DataAccess
         {
             return access.SaveDataAsync(Update_Procedure, model);
         }
+        #endregion
+
+        #region Delete
+        public void Delete(MaterialModel model)
+        {
+            Delete(model.Id);
+        }
+
+        public void Delete(int id)
+        {
+            access.SaveData(Delete_Procedure, new { Id = id });
+        }
+
+        public Task DeleteAsync(MaterialModel model)
+        {
+            return DeleteAsync(model.Id);
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            return access.SaveDataAsync(Delete_Procedure, new { Id = id });
+        }
+        #endregion
     }
 }

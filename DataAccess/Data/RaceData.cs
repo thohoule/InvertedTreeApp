@@ -1,5 +1,6 @@
 ﻿using DataAccess.DBAccess;
 using DataAccess.Models;
+using System.Reflection;
 
 namespace DataAccess
 {
@@ -9,6 +10,7 @@ namespace DataAccess
         private const string Get_All_Procedure = "dbo.spRace_GetAll";
         private const string Insert_Procedure = "dbo.spRace_Insert";
         private const string Update_Procedure = "dbo.spRace_Update";
+        private const string Delete_Procedure = "dbo.spRace_Delete";
         private const string Get_Options_Procedure = "spRace_GetHeritageOption";
         private const string Get_Excluded_Options_Procedure = "sRace_GetExcludedHeritageOptions";
         private const string Insert_Hetitage_Option_Procedure = "spRace_InsertHeritageOption";
@@ -24,8 +26,8 @@ namespace DataAccess
         {
             var items = access.LoadData<RaceModel, dynamic>(Get_All_Procedure, new { });
 
-            foreach (var item in items)
-                SetHeritageOptions(item);
+            //foreach (var item in items)
+            //    SetHeritageOptions(item);
 
             return items;
         }
@@ -34,8 +36,8 @@ namespace DataAccess
         {
             var items = await access.LoadDataAsync<RaceModel, dynamic>(Get_All_Procedure, new {  });
 
-            foreach (var item in items)
-                await SetHeritageOptionsAsync(item);
+            //foreach (var item in items)
+            //    await SetHeritageOptionsAsync(item);
 
             return items;
         }
@@ -45,8 +47,8 @@ namespace DataAccess
             var item = access.LoadData<RaceModel, dynamic>(
                 Get_Procedure, new { id }).FirstOrDefault();
 
-            if (item != null)
-                SetHeritageOptions(item);
+            //if (item != null)
+            //    SetHeritageOptions(item);
 
             return item;
         }
@@ -56,8 +58,8 @@ namespace DataAccess
             var result = await access.LoadDataAsync<RaceModel, dynamic>(Get_Procedure, new { id });
             var item = result.FirstOrDefault();
 
-            if (item != null)
-                await SetHeritageOptionsAsync(item);
+            //if (item != null)
+            //    await SetHeritageOptionsAsync(item);
 
             return item;
         }
@@ -78,17 +80,17 @@ namespace DataAccess
             return result;
         }
 
-        public void SetHeritageOptions(RaceModel model)
-        {
-            model.HeritageOptions = new List<HeritageModel>(GetHeritageOptions(model.Id));
-        }
+        //public void SetHeritageOptions(RaceModel model)
+        //{
+        //    model.HeritageOptions = new List<HeritageModel>(GetHeritageOptions(model.Id));
+        //}
 
-        public async Task SetHeritageOptionsAsync(RaceModel model)
-        {
-            var options = await GetHeritageOptionsAsync(model.Id);
+        //public async Task SetHeritageOptionsAsync(RaceModel model)
+        //{
+        //    var options = await GetHeritageOptionsAsync(model.Id);
 
-            model.HeritageOptions = new List<HeritageModel>(options);
-        }
+        //    model.HeritageOptions = new List<HeritageModel>(options);
+        //}
 
         public IEnumerable<HeritageModel> GetExcludedHeritageOptions(int raceID)
         {
@@ -128,5 +130,27 @@ namespace DataAccess
         {
             return access.SaveDataAsync(Update_Procedure, model);
         }
+
+        #region Delete
+        public void Delete(RaceModel model)
+        {
+            Delete(model.Id);
+        }
+
+        public void Delete(int id)
+        {
+            access.SaveData(Delete_Procedure, new { Id = id });
+        }
+
+        public Task DeleteAsync(RaceModel model)
+        {
+            return DeleteAsync(model.Id);
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            return access.SaveDataAsync(Delete_Procedure, new { Id = id });
+        }
+        #endregion
     }
 }

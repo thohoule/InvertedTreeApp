@@ -42,6 +42,12 @@ namespace DataAccess
             DataManager.RaceData.UpdateHeritageOptions(model, HeritageOptions);
         }
 
+        protected override bool onDelete()
+        {
+            DataManager.RaceData.Delete(model);
+            return true;
+        }
+
         public static implicit operator RaceModel(RaceProxy proxy)
         {
             return proxy.model;

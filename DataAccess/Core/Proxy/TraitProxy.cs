@@ -29,5 +29,11 @@ namespace DataAccess
         {
             DataManager.TraitData.Update(model);
         }
+
+        protected override bool onDelete()
+        {
+            DataManager.TraitData.Delete(model);
+            return true;
+        }
     }
 }

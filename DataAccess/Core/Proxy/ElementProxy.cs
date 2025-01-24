@@ -82,6 +82,11 @@ namespace DataAccess
             return onModelSet(model);
         }
 
+        internal bool DeleteModel()
+        {
+            return onDelete();
+        }
+
         protected internal void OnEdit(string propertyName)
         {
             if (!IsEdited)
@@ -97,5 +102,6 @@ namespace DataAccess
 
         protected abstract bool onModelSet(IElementModel model);        
         protected abstract void onSave();
+        protected abstract bool onDelete();
     }
 }

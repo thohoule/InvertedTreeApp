@@ -29,5 +29,11 @@ namespace DataAccess
         {
             DataManager.AbilityData.Update(model);
         }
+
+        protected override bool onDelete()
+        {
+            DataManager.AbilityData.Delete(model);
+            return true;
+        }
     }
 }

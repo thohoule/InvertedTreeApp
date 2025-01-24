@@ -107,6 +107,32 @@
     <Build Include="dbo\StoredProcedures\spRace_GetHeritageOption.sql" />
     <Build Include="dbo\StoredProcedures\sRace_GetExcludedHeritageOptions.sql" />
     <Build Include="dbo\StoredProcedures\spRace_InsertHeritageOption.sql" />
+    <Build Include="dbo\Tables\CharacteristicType.sql" />
+    <Build Include="dbo\Tables\CharacteristicTypeOption.sql" />
+    <Build Include="dbo\Tables\CharacteristicOption.sql" />
+    <Build Include="dbo\Tables\Feature.sql" />
+    <Build Include="dbo\Tables\Property.sql" />
+    <Build Include="dbo\Tables\HeritageFeatureOption.sql" />
+    <Build Include="dbo\Tables\HeritagePropertyOption.sql" />
+    <Build Include="dbo\Tables\CharacteristicFeatureOption.sql" />
+    <Build Include="dbo\StoredProcedures\spProperty_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spProperty_Get.sql" />
+    <Build Include="dbo\StoredProcedures\spProperty_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spProperty_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spProperty_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spFeature_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spFeature_Get.sql" />
+    <Build Include="dbo\StoredProcedures\spFeature_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spFeature_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spFeature_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spCharacteristicType_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spCharacteristicType_Get.sql" />
+    <Build Include="dbo\StoredProcedures\spCharacteristicType_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spCharacteristicType_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spCharacteristicType_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_GetCharacteristicTypeOption.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_GetPropertyOption.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_GetFeatureOption.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="InvertedTreeDB.refactorlog" />

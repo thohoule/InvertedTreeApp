@@ -29,5 +29,11 @@ namespace DataAccess
         {
             DataManager.MaterialData.Update(model);
         }
+
+        protected override bool onDelete()
+        {
+            DataManager.MaterialData.Delete(model);
+            return true;
+        }
     }
 }

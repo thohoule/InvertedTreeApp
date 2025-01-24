@@ -29,5 +29,11 @@ namespace DataAccess
         {
             DataManager.CharacteristicData.Update(model);
         }
+
+        protected override bool onDelete()
+        {
+            DataManager.CharacteristicData.Delete(model);
+            return true;
+        }
     }
 }
