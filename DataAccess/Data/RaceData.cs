@@ -12,7 +12,7 @@ namespace DataAccess
         private const string Update_Procedure = "dbo.spRace_Update";
         private const string Delete_Procedure = "dbo.spRace_Delete";
         private const string Get_Options_Procedure = "spRace_GetHeritageOption";
-        private const string Get_Excluded_Options_Procedure = "sRace_GetExcludedHeritageOptions";
+        private const string Get_Excluded_Options_Procedure = "spRace_GetExcludedHeritageOptions";
         private const string Insert_Hetitage_Option_Procedure = "spRace_InsertHeritageOption";
 
         private ISQLDataAccess access;

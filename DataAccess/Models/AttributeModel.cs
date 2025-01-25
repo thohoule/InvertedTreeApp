@@ -1,7 +1,7 @@
 ﻿
 namespace DataAccess.Models
 {
-    public class PropertyModel : IElementModel
+    public class AttributeModel : IElementModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

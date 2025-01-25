@@ -18,6 +18,7 @@ namespace DataAccess
         private CharacteristicTypeData characteristicTypeData;
         private PropertyData propertyData;
         private FeatureData featureData;
+        private AttributeData attributeData;
 
         private static DataManager _instace;
         private static DataManager instance { get => _instace ?? (_instace = new DataManager()); }
@@ -31,6 +32,7 @@ namespace DataAccess
         internal static CharacteristicTypeData CharacteristicTypeData { get => instance.characteristicTypeData; }
         internal static PropertyData PropertyData { get => instance.propertyData; }
         internal static FeatureData FeatureData { get => instance.featureData; }
+        internal static AttributeData AttributeData { get => instance.attributeData; }
 
         public static IReadOnlyList<string> ElementTypes => instance.elementTypes;
 
@@ -44,6 +46,10 @@ namespace DataAccess
             traitData = new TraitData(access);
             abilityData = new AbilityData(access);
             materialData = new MaterialData(access);
+            characteristicTypeData = new CharacteristicTypeData(access);
+            propertyData = new PropertyData(access);
+            featureData = new FeatureData(access);
+            attributeData = new AttributeData(access);
         }
 
         /// <summary>
@@ -151,6 +157,14 @@ namespace DataAccess
         {
             var proxySet = new ProxySet<FeatureModel, FeatureProxy>(
                 FeatureData.GetAll());
+
+            return proxySet;
+        }
+
+        public static ProxySet<AttributeModel, AttributeProxy> GetAllAttributes()
+        {
+            var proxySet = new ProxySet<AttributeModel, AttributeProxy>(
+                AttributeData.GetAll());
 
             return proxySet;
         }

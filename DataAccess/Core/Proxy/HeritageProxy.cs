@@ -26,12 +26,20 @@ namespace DataAccess
                 CharacteristicTypeOptions = 
                     new ObservableCollection<CharacteristicTypeModel>(
                     DataManager.HeritageData.GetCharacteristicTypeOptions(model.Id));
+                CharacteristicTypeOptionPool =
+                    new ObservableCollection<CharacteristicTypeModel>(
+                        DataManager.HeritageData.GetExcludedCharacteristicTypeOptions(
+                            model.Id));
 
                 PropertyOptions = new ObservableCollection<PropertyModel>(
                     DataManager.HeritageData.GetPropertyOptions(model.Id));
+                PropertyOptionPool = new ObservableCollection<PropertyModel>(
+                    DataManager.HeritageData.GetExcludedPropertyOptions(model.Id));
 
                 FeatureOptions = new ObservableCollection<FeatureModel>(
                     DataManager.HeritageData.GetFeatureOptions(model.Id));
+                FeatureOptionPool = new ObservableCollection<FeatureModel>(
+                    DataManager.HeritageData.GetExcludedFeatureOptions(model.Id));
 
                 return true;
             }

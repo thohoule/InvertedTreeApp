@@ -13,6 +13,9 @@ namespace DataAccess
         private const string Get_CharacteristicType_Options_Procedure = "spHeritage_GetCharacteristicTypeOption";
         private const string Get_Property_Options_Procedure = "spHeritage_GetPropertyOption";
         private const string Get_Feature_Options_Procedure = "spHeritage_GetFeatureOption";
+        private const string Get_Excluded_CharacteristicType_Options_Procedure = "spHeritage_GetExcludedCharacteristicTypeOptions";
+        private const string Get_Excluded_Property_Options_Procedure = "spHeritage_GetExcludedPropertyOptions";
+        private const string Get_Excluded_Feature_Options_Procedure = "spHeritage_GetExcludedFeatureOptions";
 
         private ISQLDataAccess access;
 
@@ -53,7 +56,7 @@ namespace DataAccess
         /// <returns>All options that belong to provided id.</returns>
         public IEnumerable<CharacteristicTypeModel> GetCharacteristicTypeOptions(int heritageId)
         {
-            return access.LoadData<CharacteristicTypeModel, dynamic>("", new { heritageId });
+            return access.LoadData<CharacteristicTypeModel, dynamic>(Get_CharacteristicType_Options_Procedure, new { heritageId });
         }
 
         public async Task<IEnumerable<CharacteristicTypeModel>> GetCharacteristicTypeOptionsAsync(int heritageId)
@@ -101,11 +104,26 @@ namespace DataAccess
         #endregion
 
         #region Get Excluded Options
-        //public IEnumerable<CharacteristicTypeModel> 
-        //    GetExcludedCharacteristicTypeOptions(int heritageId)
-        //{
+        public IEnumerable<CharacteristicTypeModel>
+            GetExcludedCharacteristicTypeOptions(int heritageId)
+        {
+            return access.LoadData<CharacteristicTypeModel, dynamic>(
+                Get_Excluded_CharacteristicType_Options_Procedure, new { heritageId });
+        }
 
-        //}
+        public IEnumerable<PropertyModel>
+            GetExcludedPropertyOptions(int heritageId)
+        {
+            return access.LoadData<PropertyModel, dynamic>(
+                Get_Excluded_Property_Options_Procedure, new { heritageId });
+        }
+
+        public IEnumerable<FeatureModel>
+            GetExcludedFeatureOptions(int heritageId)
+        {
+            return access.LoadData<FeatureModel, dynamic>(
+                Get_Excluded_Feature_Options_Procedure, new { heritageId });
+        }
         #endregion
 
         #region Insert

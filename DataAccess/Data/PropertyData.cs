@@ -45,7 +45,7 @@ namespace DataAccess
         #region Insert
         public void Insert(PropertyModel model)
         {
-            access.SaveData(Insert_Procedure, new { model.Name, model.Description, model.State });
+            access.SaveData(Insert_Procedure, new { model.Name, model.Type, model.Description, model.State });
         }
 
         public Task InsertAsync(PropertyModel model)
@@ -57,7 +57,7 @@ namespace DataAccess
         #region Update
         public void Update(PropertyModel model)
         {
-            access.SaveData(Update_Procedure, new { model.Id, model.Name, model.Description, model.State });
+            access.SaveData(Update_Procedure, new { model.Id, model.Name, model.Type, model.Description, model.State });
         }
 
         public Task UpdateAsync(PropertyModel model)

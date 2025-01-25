@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[sRace_GetExcludedHeritageOptions]
+﻿CREATE PROCEDURE [dbo].[spRace_GetExcludedHeritageOptions]
 	@raceId int
 AS
 begin
