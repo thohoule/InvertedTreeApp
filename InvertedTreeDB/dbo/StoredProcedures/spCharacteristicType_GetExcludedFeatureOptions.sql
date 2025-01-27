@@ -3,10 +3,10 @@
 AS
 begin
 	select *
-	from dbo.[CharacteristicType] left outer join
+	from dbo.[Feature] left outer join
 	(select *
 	from dbo.[CharacteristicFeatureOption]
 	where CharacteristicId = @characteristicID) as temp 
-	on temp.CharacteristicId = Id
-	where temp.CharacteristicId is null
+	on temp.FeatureId = Id
+	where temp.FeatureId is null
 end

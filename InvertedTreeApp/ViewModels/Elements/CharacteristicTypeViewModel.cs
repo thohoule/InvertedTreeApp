@@ -9,6 +9,8 @@ namespace InvertedTreeApp.ViewModels
         private ProxySet<CharacteristicTypeModel, CharacteristicTypeProxy> elementSet;
         IProxySet IElementViewModel.ElementSet => elementSet;
 
+        public CharacteristicTypeProxy SelectedItem { get => elementSet.SelectedItem; }
+
         public CharacteristicTypeViewModel()
         {
             elementSet = DataManager.GetAllCharacteristicTypes();

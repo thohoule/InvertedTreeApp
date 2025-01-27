@@ -8,11 +8,19 @@ namespace DataAccess
         private CharacteristicModel model;
         protected override IElementModel element => model;
 
+        public ObservableCollection<FeatureModel> FeatureOptions { get; private set; }
+        public ObservableCollection<FeatureModel> FeatureOptionPool { get; private set; }
+
         protected override bool onModelSet(IElementModel model)
         {
             if (model is CharacteristicModel)
             {
                 this.model = (CharacteristicModel)model;
+
+                FeatureOptions = new ObservableCollection<FeatureModel>(
+                    DataManager.CharacteristicData.GetFeatureOptions(model.Id));
+                FeatureOptionPool = new ObservableCollection<FeatureModel>(
+                    DataManager.CharacteristicData.GetExcludedFeatureOptions(model.Id));
 
                 return true;
             }

@@ -7,7 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <local:OptionsEditControl x:Name="FeatureOptions"
+                                  Text="Features"
+                                  OptionItemsSource="{x:Bind characteristicViewModel.SelectedItem.FeatureOptions, Mode=OneWay}"
+                                  PoolItemsSource="{x:Bind characteristicViewModel.SelectedItem.FeatureOptionPool, Mode=OneWay}" />
+    </StackPanel>
 </UserControl>

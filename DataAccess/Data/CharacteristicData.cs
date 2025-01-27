@@ -10,8 +10,8 @@ namespace DataAccess
         private const string Insert_Procedure = "dbo.spCharacteristic_Insert";
         private const string Update_Procedure = "dbo.spCharacteristic_Update";
         private const string Delete_Procedure = "dbo.spCharacteristic_Delete";
-        private const string Get_Feature_Options_Procedure = "spCharacteristicType_GetFeatureOptions";
-        private const string Get_Excluded_Feature_Options_Procedure = "spCharacteristicType_GetExcludedFeatureOptions";
+        private const string Get_Feature_Options_Procedure = "spCharacteristic_GetFeatureOptions";
+        private const string Get_Excluded_Feature_Options_Procedure = "spCharacteristic_GetExcludedFeatureOptions";
 
         private ISQLDataAccess access;
 
