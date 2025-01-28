@@ -15,6 +15,7 @@
     <None Remove="Views\Controls\Base\ElementDisplayControl.xaml" />
     <None Remove="Views\Controls\Base\ElementListControl.xaml" />
     <None Remove="Views\Controls\Base\OptionsEditControl.xaml" />
+    <None Remove="Views\Controls\Base\RequirementViewControl.xaml" />
     <None Remove="Views\Controls\Base\StateDropDown.xaml" />
     <None Remove="Views\Controls\Elements\AbilityControl.xaml" />
     <None Remove="Views\Controls\Elements\CharacteristicControl.xaml" />
@@ -26,6 +27,7 @@
     <None Remove="Views\Controls\Elements\RaceControl.xaml" />
     <None Remove="Views\Controls\Elements\TraitControl.xaml" />
     <None Remove="Views\ElementsViewControl.xaml" />
+    <None Remove="Views\Pages\MainPages\DesignPage.xaml" />
     <None Remove="Views\Pages\MainPages\EditPage.xaml" />
   </ItemGroup>
 
@@ -56,6 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Base\RequirementViewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Pages\MainPages\DesignPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Controls\Base\OptionsEditControl.xaml">
