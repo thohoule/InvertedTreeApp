@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="InvertedTreeApp.Views.TraitControl"
+    x:Class="InvertedTreeApp.Views.RequirementItemControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InvertedTreeApp.Views"
@@ -8,6 +8,13 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Horizontal">
-        <local:RequirementViewControl />
+        <ComboBox x:Name="TypeSelectionComboBox"
+                  SelectionChanged="TypeSelectionComboBox_SelectionChanged">
+            <x:String>Property</x:String>
+            <x:String>Attribute</x:String>
+            <x:String>Quality</x:String>
+            <x:String>Feature</x:String>
+        </ComboBox>
+        <ComboBox x:Name="ItemSelectionComboBox" />
     </StackPanel>
 </UserControl>

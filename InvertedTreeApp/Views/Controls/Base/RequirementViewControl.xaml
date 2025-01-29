@@ -24,18 +24,7 @@
             <ItemsView>
                 <ItemsView.ItemTemplate>
                     <DataTemplate>
-                        <!--Needs to be made into a sub-control-->
-                        <StackPanel Orientation="Horizontal">
-                            <!--Type-->
-                            <ComboBox>
-                                <x:String>Property</x:String>
-                                <x:String>Attribute</x:String>
-                                <x:String>Quality</x:String>
-                                <x:String>Feature</x:String>
-                            </ComboBox>
-                            <!--Item Selection-->
-                            <ComboBox />
-                        </StackPanel>
+                        <local:RequirementItemControl />
                     </DataTemplate>
                 </ItemsView.ItemTemplate>
             </ItemsView>

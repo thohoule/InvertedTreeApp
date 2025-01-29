@@ -10,6 +10,7 @@ namespace DataAccess
         private const string Insert_Procedure = "dbo.spTrait_Insert";
         private const string Update_Procedure = "dbo.spTrait_Update";
         private const string Delete_Procedure = "dbo.spTrait_Delete";
+        private const string Get_Requirements_Procedure = "dbo.spTrait_GetRequirements";
 
         private ISQLDataAccess access;
 
@@ -39,6 +40,14 @@ namespace DataAccess
             var result = await access.LoadDataAsync<TraitModel, dynamic>(Get_Procedure, new { id });
             return result.FirstOrDefault();
         }
+
+        #region Requirements
+        public IEnumerable<RequirementModel> GetRequirements(int traitID)
+        {
+            return access.LoadData<RequirementModel, dynamic>(
+                Get_Requirements_Procedure, new { traitID });
+        }
+        #endregion
 
         public void Insert(TraitModel model)
         {

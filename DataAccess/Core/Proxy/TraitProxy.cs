@@ -8,11 +8,16 @@ namespace DataAccess
         private TraitModel model;
         protected override IElementModel element => model;
 
+        public ObservableCollection<RequirementModel> Requirements { get; private set; }
+
         protected override bool onModelSet(IElementModel model)
         {
             if (model is TraitModel)
             {
                 this.model = (TraitModel)model;
+
+                Requirements = new ObservableCollection<RequirementModel>(
+                    DataManager.TraitData.GetRequirements(model.Id));
 
                 return true;
             }

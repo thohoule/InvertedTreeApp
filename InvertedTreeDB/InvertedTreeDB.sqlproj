@@ -139,6 +139,8 @@
     <Build Include="dbo\Tables\Attribute.sql" />
     <Build Include="dbo\StoredProcedures\spCharacteristic_GetFeatureOptions.sql" />
     <Build Include="dbo\StoredProcedures\spCharacteristic_GetExcludedFeatureOptions.sql" />
+    <Build Include="dbo\Tables\TraitRequirement.sql" />
+    <Build Include="dbo\StoredProcedures\spTrait_GetRequirements.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="InvertedTreeDB.refactorlog" />

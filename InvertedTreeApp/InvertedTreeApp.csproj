@@ -15,6 +15,7 @@
     <None Remove="Views\Controls\Base\ElementDisplayControl.xaml" />
     <None Remove="Views\Controls\Base\ElementListControl.xaml" />
     <None Remove="Views\Controls\Base\OptionsEditControl.xaml" />
+    <None Remove="Views\Controls\Base\RequirementItemControl.xaml" />
     <None Remove="Views\Controls\Base\RequirementViewControl.xaml" />
     <None Remove="Views\Controls\Base\StateDropDown.xaml" />
     <None Remove="Views\Controls\Elements\AbilityControl.xaml" />
@@ -58,6 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Controls\Base\RequirementItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Controls\Base\RequirementViewControl.xaml">
