@@ -55,6 +55,13 @@ namespace DataAccess
         protected override void onSave()
         {
             DataManager.HeritageData.Update(model);
+
+            DataManager.HeritageData.UpdateCharacteristicTypeOptions(model,
+                CharacteristicTypeOptions);
+            DataManager.HeritageData.UpdateFeatureOptions(model,
+                FeatureOptions);
+            DataManager.HeritageData.UpdatePropertyOptions(model,
+                PropertyOptions);
         }
 
         protected override bool onDelete()

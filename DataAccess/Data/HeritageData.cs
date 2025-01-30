@@ -16,6 +16,9 @@ namespace DataAccess
         private const string Get_Excluded_CharacteristicType_Options_Procedure = "spHeritage_GetExcludedCharacteristicTypeOptions";
         private const string Get_Excluded_Property_Options_Procedure = "spHeritage_GetExcludedPropertyOptions";
         private const string Get_Excluded_Feature_Options_Procedure = "spHeritage_GetExcludedFeatureOptions";
+        private const string Insert_CharacteristicType_Option_Procedure = "spHeritage_InsertCharacteristicTypeOption";
+        private const string Insert_Feature_Option_Procedure = "spHeritage_InsertFeatureOption";
+        private const string Insert_Property_Option_Procedure = "spHeritage_InsertPropertyOption";
 
         private ISQLDataAccess access;
 
@@ -147,6 +150,36 @@ namespace DataAccess
         public Task UpdateAsync(HeritageModel model)
         {
             return access.SaveDataAsync(Update_Procedure, model);
+        }
+
+        public void UpdateCharacteristicTypeOptions(HeritageModel model, 
+            IEnumerable<CharacteristicTypeModel> options)
+        {
+            foreach (var option in options)
+            {
+                access.SaveData(Insert_CharacteristicType_Option_Procedure,
+                    new { HeritageId = model.Id, CharacteristicTypeId = option.Id });
+            }
+        }
+
+        public void UpdatePropertyOptions(HeritageModel model,
+            IEnumerable<PropertyModel> options)
+        {
+            foreach (var option in options)
+            {
+                access.SaveData(Insert_Property_Option_Procedure,
+                    new { HeritageId = model.Id, PropertyId = option.Id });
+            }
+        }
+
+        public void UpdateFeatureOptions(HeritageModel model,
+            IEnumerable<FeatureModel> options)
+        {
+            foreach (var option in options)
+            {
+                access.SaveData(Insert_Feature_Option_Procedure,
+                    new { HeritageId = model.Id, FeatureId = option.Id });
+            }
         }
         #endregion
 

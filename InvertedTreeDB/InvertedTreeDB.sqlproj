@@ -141,6 +141,9 @@
     <Build Include="dbo\StoredProcedures\spCharacteristic_GetExcludedFeatureOptions.sql" />
     <Build Include="dbo\Tables\TraitRequirement.sql" />
     <Build Include="dbo\StoredProcedures\spTrait_GetRequirements.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_InsertCharacteristicTypeOption.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_InsertPropertyOption.sql" />
+    <Build Include="dbo\StoredProcedures\spHeritage_InsertFeatureOption.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="InvertedTreeDB.refactorlog" />
